@@ -4,32 +4,38 @@ package net.mlz.library.book;
 // in order to have better control over the fields shown.
 
 public class BookRsp {
-    Book book;
+    private Book book;
+    private String message="OK";
 
-    BookRsp(Book b) { this.book=b; }
+    public BookRsp(Book b) { this.book=b; }
 
-    public int getId() { return book.getId(); }
+    public Book getBook() { return book; }
+    public String getMessage() { return message; }
+    public void setMessage(String m) { message=m; }
 
-    public String getAuthor() {
-        return book.getAuthor();
-    }
-    public void setAuthor(String author) {
-        book.setAuthor(author);
-    }
 
-    public String getTitle() {
-        return book.getTitle();
-    }
-    public void setTitle(String title) {
-        book.setTitle(title);
-    }
-
-    public String getYear() {
-        return book.getYear();
-    }
-    public void setYear(String year) {
-        book.setYear(year);
-    }
+//    public int getId() { return book.getId(); }
+//
+//    public String getAuthor() {
+//        return book.getAuthor();
+//    }
+//    public void setAuthor(String author) {
+//        book.setAuthor(author);
+//    }
+//
+//    public String getTitle() {
+//        return book.getTitle();
+//    }
+//    public void setTitle(String title) {
+//        book.setTitle(title);
+//    }
+//
+//    public String getYear() {
+//        return book.getYear();
+//    }
+//    public void setYear(String year) {
+//        book.setYear(year);
+//    }
 
 
 }

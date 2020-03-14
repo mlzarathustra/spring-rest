@@ -1,5 +1,7 @@
 package net.mlz.library.controllers;
 import net.mlz.library.book.Book;
+import net.mlz.library.book.BookNotFoundException;
+import net.mlz.library.book.BookRsp;
 import net.mlz.library.book.BookService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -7,7 +9,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 
 @RestController
@@ -34,10 +35,11 @@ public class BookController {
         return bookService.postBook(book);
     }
 
-
     @RequestMapping(path="/{id}", method = RequestMethod.GET, produces="application/json")
-    public Book getBookById(@PathVariable("id") int id) {
-       return bookService.getBook(id);
+    public Book getBookById(@PathVariable("id") int id) throws BookNotFoundException {
+       Book b=bookService.getBook(id);
+       if (b == null) throw new BookNotFoundException("Book with id "+id+" NOT FOUND");
+       return b;
     }
 
 }
