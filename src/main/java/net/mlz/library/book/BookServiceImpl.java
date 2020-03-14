@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class BookServiceImpl implements BookService {
@@ -23,12 +24,17 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public Book getBook(Integer id) {
-        return null;
+        return bookRepo.findById(id).orElse(null);
     }
 
     @Override
-    public Book putBook(Book b) {
+    public Book postBook(Book b) {
         return bookRepo.save(b);
+    }
+
+    @Override
+    public Book putBook(Integer id, Book b) {
+        return null;
     }
 
     @Override
