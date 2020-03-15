@@ -1,5 +1,5 @@
 
-#spring-rest
+# spring-rest
 ## A simple REST app using MySQL
 
 The Postman test suite is in `test` and should import with little trouble. 
