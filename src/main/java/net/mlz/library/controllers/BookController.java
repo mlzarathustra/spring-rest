@@ -42,14 +42,11 @@ public class BookController {
         return bookService.postBook(book);
     }
 
-
-
-    // TODO - delete, replace
-
     @PutMapping(path="/", produces="application/json")
-    public Book putBook(@RequestBody Book book) {
+    public Book putBook(@RequestBody Book book) throws BookNotFoundException {
         // replace according to ID supplied
-        if (book == null) return null;
+        if (book == null) throw new BookNotFoundException(
+            "Book with id "+book.getId()+" not found.");
         return bookService.putBook(book);
     }
 

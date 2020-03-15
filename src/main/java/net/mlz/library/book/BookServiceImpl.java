@@ -23,8 +23,8 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public Book getBook(Integer id) {
-        return bookRepo.findById(id).orElse(null);              //  get
+    public Book getBook(Integer id) {                   //  get
+        return bookRepo.findById(id).orElse(null);
     }
 
     @Override
@@ -42,5 +42,9 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public void delBook(Integer id) { bookRepo.deleteById(id); }  // delete
+    public void delBook(Integer id) {                           // delete
+        if (bookRepo.existsById(id)) {
+            bookRepo.deleteById(id);
+        }
+    }
 }
