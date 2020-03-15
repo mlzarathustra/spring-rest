@@ -1,12 +1,14 @@
 package net.mlz.library.book;
 
+import lombok.Data;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Book {
+public @Data class Book {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -18,8 +20,7 @@ public class Book {
 
     public String toString() { return " { Book ["+id+"] "+author+" - "+title+" "+year+" } "; }
 
-    public Book() {
-    }
+    public Book() { } 
 
     public Book(String a, String t, String y) {
         author=a; title=t; year=y;
@@ -31,27 +32,5 @@ public class Book {
         year=b.year;
     }
 
-    public int getId() { return id; }
-
-    public String getAuthor() {
-        return author;
-    }
-    public void setAuthor(String author) {
-        this.author = author;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getYear() {
-        return year;
-    }
-    public void setYear(String year) {
-        this.year = year;
-    }
 }
 
