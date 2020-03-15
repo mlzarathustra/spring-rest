@@ -18,27 +18,29 @@ public class BookServiceImpl implements BookService {
     @Override
     public List<Book> getBookList() {
         List<Book> list=new ArrayList<>();
-        for (Book b : bookRepo.findAll() ) list.add(b);
+        for (Book b : bookRepo.findAll() ) list.add(b);  // list
         return list;
     }
 
     @Override
     public Book getBook(Integer id) {
-        return bookRepo.findById(id).orElse(null);
+        return bookRepo.findById(id).orElse(null);              //  get
     }
 
     @Override
     public Book postBook(Book b) {
         return bookRepo.save(b);
+    }   // create
+
+    @Override                                                   // update
+    public Book putBook(Book rpl) {
+        Book org=bookRepo.findById(rpl.getId()).orElse(null);
+        if (org == null) return null;
+        org.copy(rpl);
+        bookRepo.save(org);
+        return org;
     }
 
     @Override
-    public Book putBook(Integer id, Book b) {
-        return null;
-    }
-
-    @Override
-    public Book delBook(Integer id) {
-        return null;
-    }
+    public void delBook(Integer id) { bookRepo.deleteById(id); }  // delete
 }

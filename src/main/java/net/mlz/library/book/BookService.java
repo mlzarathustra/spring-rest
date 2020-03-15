@@ -6,6 +6,6 @@ public interface BookService {
     public List<Book> getBookList();
     public Book getBook(Integer id);
     public Book postBook(Book b);  // create
-    public Book putBook(Integer id, Book b); // update
-    public Book delBook(Integer id);
+    public Book putBook(Book b); // update
+    public void delBook(Integer id);
 }

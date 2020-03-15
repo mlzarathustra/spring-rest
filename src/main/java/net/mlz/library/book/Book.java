@@ -25,6 +25,12 @@ public class Book {
         author=a; title=t; year=y;
     }
 
+    public void copy(Book b) {
+        author=b.author;
+        title=b.title;
+        year=b.year;
+    }
+
     public int getId() { return id; }
 
     public String getAuthor() {

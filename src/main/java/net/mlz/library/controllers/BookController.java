@@ -23,23 +23,41 @@ public class BookController {
         this.bookService = bookService;
     }
 
-    @RequestMapping(path="/", method= RequestMethod.GET, produces="application/json")
+    @GetMapping(path="/", produces="application/json")
     public List<Book> getBooks() {
         log.info("GET (no args)");
         return bookService.getBookList();
     }
 
-    @RequestMapping(path="/", method=RequestMethod.POST, produces="application/json")
-    public Book postBook(@RequestBody Book book) {
-        log.info("POST book");
-        return bookService.postBook(book);
-    }
-
-    @RequestMapping(path="/{id}", method = RequestMethod.GET, produces="application/json")
+    @GetMapping(path="/{id}", produces="application/json")
     public Book getBookById(@PathVariable("id") int id) throws BookNotFoundException {
        Book b=bookService.getBook(id);
        if (b == null) throw new BookNotFoundException("Book with id "+id+" NOT FOUND");
        return b;
     }
+
+    @PostMapping(path="/",  produces="application/json")
+    public Book postBook(@RequestBody Book book) {
+        log.info("POST book");
+        return bookService.postBook(book);
+    }
+
+
+
+    // TODO - delete, replace
+
+    @PutMapping(path="/", produces="application/json")
+    public Book putBook(@RequestBody Book book) {
+        // replace according to ID supplied
+        if (book == null) return null;
+        return bookService.putBook(book);
+    }
+
+    @DeleteMapping(path="/{id}", produces="application/json")
+    public void delBook(@PathVariable("id") int id) {
+        log.info("DEL book id="+id);
+        bookService.delBook(id);
+    }
+
 
 }

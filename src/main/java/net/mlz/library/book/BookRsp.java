@@ -13,29 +13,4 @@ public class BookRsp {
     public String getMessage() { return message; }
     public void setMessage(String m) { message=m; }
 
-
-//    public int getId() { return book.getId(); }
-//
-//    public String getAuthor() {
-//        return book.getAuthor();
-//    }
-//    public void setAuthor(String author) {
-//        book.setAuthor(author);
-//    }
-//
-//    public String getTitle() {
-//        return book.getTitle();
-//    }
-//    public void setTitle(String title) {
-//        book.setTitle(title);
-//    }
-//
-//    public String getYear() {
-//        return book.getYear();
-//    }
-//    public void setYear(String year) {
-//        book.setYear(year);
-//    }
-
-
 }
